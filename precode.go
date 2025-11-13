@@ -57,7 +57,7 @@ func TestMainHandlerWhenCountMoreThanTotal(t *testing.T) {
 	handler := http.HandlerFunc(mainHandle)
 	handler.ServeHTTP(responseRecorder, req)
 	require.Equal(t, http.StatusOK, responseRecorder.Code)
-	assert.NotNil(t, responseRecorder)
+	assert.NotNil(t, responseRecorder.Body)
 	body := responseRecorder.Body.String()
 	parts := strings.Split(body, ",")
 	assert.Len(t, parts, totalCount)
